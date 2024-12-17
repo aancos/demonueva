@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: proveedores00
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4D_100
+          url: http://demo:444
+          client: '100'
+        app:
+          name: ZDEMO00
+          description: Demo App Antonio
+          package: ZDEMO
+          transport: S4DK900241
+        exclude:
+          - /test/
